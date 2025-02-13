@@ -24,7 +24,7 @@ Route::get('/calendar', function () {
     return Inertia::render('Calendar');
 })->name('calendar');
 
-Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+Route::post('/calendly-appointments', [AppointmentController::class, 'store'])->name('calendly.appointments.store');
 Route::get('/appointments/check-availability', [AppointmentController::class, 'checkAvailability'])->name('appointments.check-availability');
 
 require __DIR__.'/auth.php';

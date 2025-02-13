@@ -1,36 +1,30 @@
 import { Head } from '@inertiajs/react'
-import { useEffect } from 'react'
+import CustomCalendar from '@/Components/CustomCalendar'
+import FadeWrapper from '@/Components/FadeWrapper'
 
 export default function Calendar() {
-    useEffect(() => {
-        // Chargement du script Calendly
-        const script = document.createElement('script')
-        script.src = 'https://assets.calendly.com/assets/external/widget.js'
-        script.async = true
-        document.body.appendChild(script)
-
-        return () => {
-            // Nettoyage du script lors du démontage
-            document.body.removeChild(script)
-        }
-    }, [])
-
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Head title="Prendre RDV" />
+        <div className="min-h-screen bg-gray-100 pt-screen">
+            <Head title="Prendre rendez-vous" />
             
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                        Prenez rendez-vous avec nous
-                    </h1>
-                    
-                    <div className="calendly-inline-widget" 
-                        data-url="VOTRE_URL_CALENDLY_ICI"
-                        style={{ minWidth: '320px', height: '700px' }} 
-                    />
+            {/* Espace vide pour pousser le contenu en bas */}
+            <div className="h-screen" />
+            
+            {/* Section calendrier */}
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="flex justify-end">
+                    <div className="w-full max-w-md">
+                        <FadeWrapper>
+                            <div className="bg-white rounded-2xl shadow-xl p-6">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                                    Prenez rendez-vous
+                                </h2>
+                                <CustomCalendar />
+                            </div>
+                        </FadeWrapper>
+                    </div>
                 </div>
             </div>
         </div>
-    )
+    );
 } 
