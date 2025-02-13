@@ -3,11 +3,14 @@ import { useState } from 'react'
 export default function TypeformSurvey({ isOpen, onClose }) {
     const [step, setStep] = useState(-1)
     const [answers, setAnswers] = useState({
-        name: '',
+        firstName: '',
+        companyName: '',
+        hasSite: '',
+        budget: '',
         email: '',
-        siteType: '',
-        phone: '',
-        message: ''
+        projectType: '',
+        projectDescription: '',
+        phone: ''
     })
 
     const intro = {
@@ -17,31 +20,55 @@ export default function TypeformSurvey({ isOpen, onClose }) {
 
     const questions = [
         {
-            title: "Comment vous appelez-vous ?",
-            key: "name",
+            title: "D'abord, j'aimerais connaître votre prénom, s'il vous plaît !",
+            subtitle: "Cette question est requise*",
+            key: "firstName",
             type: "text",
-            placeholder: "Votre nom",
+            placeholder: "Votre prénom",
             required: true
         },
         {
-            title: "Quel est votre email ?",
+            title: answers.firstName ? `Salut ! ${answers.firstName}, Pourrions-nous connaître le nom de votre entreprise, s'il vous plaît ?` : "Pourrions-nous connaître le nom de votre entreprise, s'il vous plaît ?",
+            subtitle: "Cette question est indispensable ✅",
+            key: "companyName",
+            type: "text",
+            placeholder: "Nom de l'entreprise",
+            required: true
+        },
+        {
+            title: "Avez-vous déjà un Site Internet ?",
+            key: "hasSite",
+            type: "radio",
+            options: [
+                { value: "yes", label: "Oui" },
+                { value: "no", label: "Non" }
+            ]
+        },
+        {
+            title: "Quel est votre budget ?",
+            key: "budget",
+            type: "radio",
+            options: [
+                { value: "-1000", label: "Moins de 1000 €" },
+                { value: "1000-2000", label: "1000 - 2000 €" },
+                { value: "2000-3000", label: "2000 - 3000 €" },
+                { value: "3000+", label: "Plus de 3000 €" }
+            ]
+        },
+        {
+            title: "Quelle est votre adresse e-mail de contact ? 📧",
+            subtitle: "Cette question est requise*",
             key: "email",
             type: "email",
             placeholder: "votre@email.com",
             required: true
         },
         {
-            title: "À propos de votre site web idéal, quel type vous intéresse ?",
+            title: "À propos de votre site web idéal, pourriez-vous nous en parler en quelques phrases ?",
             subtitle: "(One page, E-commerce, Full section, site vitrine, marketplace...) Cette question est cruciale ✅",
-            key: "siteType",
-            type: "radio",
-            options: [
-                { value: "onepage", label: "One Page" },
-                { value: "ecommerce", label: "E-commerce" },
-                { value: "fullsection", label: "Full Section" },
-                { value: "vitrine", label: "Site Vitrine" },
-                { value: "marketplace", label: "Marketplace" }
-            ],
+            key: "projectDescription",
+            type: "text",
+            placeholder: "Décrivez votre projet idéal...",
             required: true
         },
         {
@@ -51,18 +78,12 @@ export default function TypeformSurvey({ isOpen, onClose }) {
             type: "tel",
             placeholder: "06 XX XX XX XX",
             required: true
-        },
-        {
-            title: "Un message complémentaire ?",
-            key: "message",
-            type: "textarea",
-            placeholder: "Votre message..."
         }
     ]
 
     const finalMessage = {
         title: "Merci d'avoir rempli ce formulaire",
-        subtitle: "Je vais vous contacter sous 24H 🙂",
+        subtitle: "Je vais vous contacter sous 24H",
         isFinal: true
     }
 
@@ -97,7 +118,7 @@ export default function TypeformSurvey({ isOpen, onClose }) {
             setTimeout(() => {
                 onClose()
                 setStep(-1)
-                setAnswers({ name: '', email: '', siteType: '', phone: '', message: '' })
+                setAnswers({ firstName: '', companyName: '', hasSite: '', budget: '', email: '', projectType: '', projectDescription: '', phone: '' })
             }, 2000)
         }
     }
