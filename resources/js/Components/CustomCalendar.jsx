@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-export default function CustomCalendar() {
+export default function CustomCalendar({ onSubmitSuccess }) {
     const [selectedDate, setSelectedDate] = useState(null)
     const [selectedTime, setSelectedTime] = useState(null)
     const [showContactForm, setShowContactForm] = useState(false)
@@ -78,21 +78,20 @@ export default function CustomCalendar() {
                 ...contactInfo
             });
             
-            console.log('Réponse:', response.data);
-            
             if (response.data.success) {
-                setShowSuccess(true);
+                setShowSuccess(true)
                 setTimeout(() => {
-                    setShowSuccess(false);
-                    setShowContactForm(false);
-                    setSelectedDate(null);
-                    setSelectedTime(null);
-                    setContactInfo({ name: '', phone: '', email: '' });
-                }, 3000);
+                    setShowSuccess(false)
+                    setShowContactForm(false)
+                    setSelectedDate(null)
+                    setSelectedTime(null)
+                    setContactInfo({ name: '', phone: '', email: '' })
+                    onSubmitSuccess?.()
+                }, 3000)
             }
         } catch (error) {
-            console.error('Erreur détaillée:', error.response?.data);
-            alert('Erreur lors de la création du rendez-vous');
+            console.error('Erreur détaillée:', error.response?.data)
+            alert('Erreur lors de la création du rendez-vous')
         }
     }
 
