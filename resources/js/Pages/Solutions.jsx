@@ -3,6 +3,7 @@ import AppLayout from '@/Layouts/AppLayout';
 import FadeWrapper from '@/Components/FadeWrapper';
 import { useState } from 'react';
 import ContactForm from '@/Components/ContactForm';
+import FAQ from '@/Components/FAQ';
 
 export default function Solutions() {
     const [selectedCard, setSelectedCard] = useState(null);
@@ -212,23 +213,23 @@ export default function Solutions() {
 
                                     {/* Bouton */}
                                     <button
-                                        className={`w-full ${
-                                            selectedCard === index 
-                                                ? 'bg-emerald-400 hover:bg-emerald-500' 
-                                                : 'bg-blue-600 hover:bg-blue-700'
-                                        } text-white rounded-xl py-4 font-medium transition-colors flex items-center justify-center gap-2`}
-                                    >
-                                        Obtenir un devis
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                                        </svg>
-                                    </button>
+                                onClick={() => setIsContactFormOpen(true)}
+                                className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all text-lg flex items-center gap-2"
+                            >
+                                Obtenir un devis
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
                                 </div>
                             </FadeWrapper>
                         ))}
                     </div>
                 </div>
             </section>
+
+            {/* Ajout de la FAQ */}
+            <FAQ />
 
             <ContactForm 
                 isOpen={isContactFormOpen}
