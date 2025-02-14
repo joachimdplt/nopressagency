@@ -79,7 +79,7 @@ export default function Home() {
             {/* Typewriter */}
             <Typewriter />
             
-            {/* Section Hero */}
+            {/* Section Hero - Retour à la version simple */}
             <section className="h-screen flex items-center">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between">
@@ -124,70 +124,59 @@ export default function Home() {
             {/* Section Nos Offres */}
             <OffersSection />
 
-            {/* Section Calendrier */}
-            <section id="calendly-section" className="h-screen flex items-center justify-center">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col items-center text-center mb-8">
-                        <FadeWrapper show={showCalendar}>
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight mb-4">
-                                Pourquoi payer Calendly tous les mois ?
-                            </h2>
-                            <p className="text-xl text-gray-600 max-w-2xl">
-                                Nous pouvons vous intégrer des solutions sur mesure, adaptées à vos besoins spécifiques, sans frais mensuels récurrents.
-                            </p>
-                        </FadeWrapper>
-                    </div>
+            {/* Section Calendrier avec background */}
+            <section id="calendly-section" className="py-24 relative">
+                {/* Background Image avec overlay */}
+                <div 
+                    className="absolute inset-0 z-0"
+                    style={{
+                        backgroundImage: "url('/images/mockups/image copy.png')",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                >
+                    <div className="absolute inset-0 bg-white/80" />
+                </div>
 
-                    <div className="flex justify-center">
+                {/* Contenu */}
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        {/* Texte à gauche */}
+                        <FadeWrapper show={showCalendar}>
+                            <div className="max-w-xl">
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight mb-6">
+                                    Pourquoi payer Calendly tous les mois ?
+                                </h2>
+                                <p className="text-xl text-gray-600">
+                                    Nous pouvons vous intégrer des solutions sur mesure, adaptées à vos besoins spécifiques, sans frais mensuels récurrents.
+                                </p>
+                                <ul className="mt-8 space-y-4">
+                                    <li className="flex items-center gap-3 text-gray-700">
+                                        <span className="text-green-500 text-xl">✓</span>
+                                        Intégration personnalisée
+                                    </li>
+                                    <li className="flex items-center gap-3 text-gray-700">
+                                        <span className="text-green-500 text-xl">✓</span>
+                                        Sans abonnement mensuel
+                                    </li>
+                                    <li className="flex items-center gap-3 text-gray-700">
+                                        <span className="text-green-500 text-xl">✓</span>
+                                        Support inclus
+                                    </li>
+                                </ul>
+                            </div>
+                        </FadeWrapper>
+
+                        {/* Calendrier à droite */}
                         <FadeWrapper show={showCalendar} delay={0.3}>
-                            <motion.div
-                                layout
-                                transition={{
-                                    layout: { duration: 0.3 }
-                                }}
-                            >
-                                {!isCalendarOpen ? (
-                                    <motion.button
-                                        onClick={() => setIsCalendarOpen(true)}
-                                        className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        initial={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                    >
-                                        Réserver un créneau
-                                    </motion.button>
-                                ) : (
-                                    <motion.div
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        exit={{ opacity: 0, scale: 0.9 }}
-                                        className="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full"
-                                    >
-                                        <div className="flex justify-between items-center mb-6">
-                                            <h2 className="text-2xl font-bold text-gray-900">
-                                                Prenez rendez-vous
-                                            </h2>
-                                            <motion.button
-                                                onClick={() => setIsCalendarOpen(false)}
-                                                className="text-gray-500 hover:text-gray-700"
-                                                whileHover={{ scale: 1.1 }}
-                                                whileTap={{ scale: 0.9 }}
-                                            >
-                                                ✕
-                                            </motion.button>
-                                        </div>
-                                        <CustomCalendar 
-                                            onSubmitSuccess={() => {
-                                                setTimeout(() => {
-                                                    setIsCalendarOpen(false)
-                                                }, 3500)
-                                            }} 
-                                        />
-                                    </motion.div>
-                                )}
-                            </motion.div>
+                            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+                                <div className="flex justify-between items-center mb-6">
+                                    <h3 className="text-2xl font-bold text-gray-900">
+                                        Prenez rendez-vous
+                                    </h3>
+                                </div>
+                                <CustomCalendar />
+                            </div>
                         </FadeWrapper>
                     </div>
                 </div>

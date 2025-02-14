@@ -1,9 +1,9 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-
 const FadeWrapper = ({ children, duration = 0.5, delay = 0, show = true }) => {
     return (
+
         <AnimatePresence>
             {show && (
                 <motion.div

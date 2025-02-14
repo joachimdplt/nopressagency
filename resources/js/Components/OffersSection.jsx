@@ -5,21 +5,21 @@ const offers = [
     {
         title: "Site Web",
         description: "Boostez votre activité grâce à votre site internet clé en main.",
-        image: "/images/site-web-mockup.png",
+        image: "/images/mockups/site-web.jpg",
         link: "/solutions#site-web",
         isNew: true
     },
     {
         title: "Publicité Google",
         description: "Générez plus de contacts en passant de visible à incontournable.",
-        image: "/images/google-ads-mockup.png",
+        image: "/images/mockups/google-ads.png",
         link: "/solutions#google-ads",
         isNew: true
     },
     {
         title: "Application Mobile",
         description: "Transformez votre présence en ligne en une véritable vitrine incontournable pour générer davantage de contacts",
-        image: "/images/app-mobile-mockup.png",
+        image: "/images/mockups/4273279.jpg",
         link: "/solutions#app-mobile",
         isNew: true
     }
@@ -29,7 +29,7 @@ const OffersSection = () => {
     return (
         <section className="py-24 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <FadeWrapper>
+                <FadeWrapper show={true}>
                     <div className="text-center mb-16">
                         <span className="text-blue-600 font-medium">NOS OFFRES</span>
                         <h2 className="text-4xl font-bold text-gray-900 mt-4 mb-6">
@@ -41,16 +41,24 @@ const OffersSection = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {offers.map((offer, index) => (
-                        <FadeWrapper key={index} delay={index * 0.2}>
+                        <FadeWrapper key={index} show={true} delay={index * 0.2}>
                             <Link 
                                 href={offer.link}
                                 className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow overflow-hidden"
                             >
                                 {offer.isNew && (
-                                    <span className="absolute top-4 right-4 bg-green-400 text-white text-xs font-medium px-2.5 py-1 rounded-full">
+                                    <span className="absolute top-4 right-4 bg-green-400 text-white text-xs font-medium px-2.5 py-1 rounded-full z-10">
                                         New
                                     </span>
                                 )}
+                                
+                                <div className="relative h-64 overflow-hidden bg-gray-50">
+                                    <img 
+                                        src={offer.image} 
+                                        alt={offer.title}
+                                        className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                                    />
+                                </div>
                                 
                                 <div className="p-6">
                                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -66,20 +74,12 @@ const OffersSection = () => {
                                         </svg>
                                     </span>
                                 </div>
-                                
-                                <div className="aspect-w-16 aspect-h-9">
-                                    <img 
-                                        src={offer.image} 
-                                        alt={offer.title}
-                                        className="object-cover w-full h-full"
-                                    />
-                                </div>
                             </Link>
                         </FadeWrapper>
                     ))}
                 </div>
 
-                <FadeWrapper delay={0.6}>
+                <FadeWrapper show={true} delay={0.6}>
                     <div className="text-center mt-12">
                         <Link 
                             href="/solutions"
