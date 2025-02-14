@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ContactRequestController;
 
 Route::get('/', function () {
     return Inertia::render('Home');
@@ -26,5 +27,15 @@ Route::get('/calendar', function () {
 
 Route::post('/calendly-appointments', [AppointmentController::class, 'store'])->name('calendly.appointments.store');
 Route::get('/appointments/check-availability', [AppointmentController::class, 'checkAvailability'])->name('appointments.check-availability');
+
+Route::get('/solutions', function () {
+    return Inertia::render('Solutions');
+})->name('solutions');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
+
+Route::post('/contact-requests', [ContactRequestController::class, 'store'])->name('contact-requests.store');
 
 require __DIR__.'/auth.php';

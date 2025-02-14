@@ -46,7 +46,9 @@ const TechLogo = ({ name }) => {
     return (
         <div className="text-gray-600 hover:text-blue-600 transition-colors duration-300">
             {logos[name]}
-            <span className="block text-center mt-2 font-medium text-sm">{name}</span>
+            <span className="block text-center mt-3 font-semibold text-lg">
+                {name}
+            </span>
         </div>
     );
 };

@@ -7,6 +7,8 @@ import Terminal from '@/Components/Terminal'
 import { motion } from 'framer-motion'
 import TechLogo from '@/Components/TechLogo'
 import TechScroll from '@/Components/TechScroll'
+import Typewriter from '@/Components/Typewriter'
+import AppLayout from '@/Layouts/AppLayout'
 
 const technologies = [
     { name: 'React', icon: '⚛️' },
@@ -48,6 +50,9 @@ export default function Home() {
     return (
         <div className="min-h-[200vh] bg-gray-100">
             <Head title="Accueil" />
+            
+            {/* Ajout du Typewriter */}
+            <Typewriter />
             
             {/* Section Hero */}
             <section className="h-screen flex items-center">
@@ -167,3 +172,5 @@ export default function Home() {
         </div>
     )
 }
+
+Home.layout = page => <AppLayout children={page} />

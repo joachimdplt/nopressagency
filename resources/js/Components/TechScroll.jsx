@@ -16,6 +16,14 @@ const TechScroll = () => {
 
     return (
         <div className="relative w-full overflow-hidden bg-white py-10">
+            {/* Titre centré au-dessus du défilement */}
+            <div className="text-center mb-8">
+                <h3 className="text-xl font-semibold text-gray-800">
+                    Des technologies à votre service :
+                </h3>
+            </div>
+
+            {/* Effet de fondu sur les bords */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-white via-transparent to-white z-10" />
             
             <motion.div
