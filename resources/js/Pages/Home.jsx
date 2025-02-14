@@ -1,4 +1,4 @@
-import { Head } from '@inertiajs/react'
+import { Head, Link } from '@inertiajs/react'
 import { useState, useEffect } from 'react'
 import TypeformSurvey from '@/Components/TypeformSurvey'
 import CustomCalendar from '@/Components/CustomCalendar'
@@ -9,6 +9,7 @@ import TechLogo from '@/Components/TechLogo'
 import TechScroll from '@/Components/TechScroll'
 import Typewriter from '@/Components/Typewriter'
 import AppLayout from '@/Layouts/AppLayout'
+import OffersSection from '@/Components/OffersSection'
 
 const technologies = [
     { name: 'React', icon: '⚛️' },
@@ -22,6 +23,30 @@ const technologies = [
 
 // Dupliquer les technologies pour un défilement continu
 const duplicatedTechnologies = [...technologies, ...technologies];
+
+const offers = [
+    {
+        title: "Site Web",
+        description: "Boostez votre activité grâce à votre site internet clé en main.",
+        image: "/images/site-web-mockup.png",
+        link: "/solutions#site-web",
+        isNew: true
+    },
+    {
+        title: "Publicité Google",
+        description: "Générez plus de contacts en passant de visible à incontournable.",
+        image: "/images/google-ads-mockup.png",
+        link: "/solutions#google-ads",
+        isNew: true
+    },
+    {
+        title: "Application Mobile",
+        description: "Transformez votre présence en ligne en une véritable vitrine incontournable pour générer davantage de contacts",
+        image: "/images/app-mobile-mockup.png",
+        link: "/solutions#app-mobile",
+        isNew: true
+    }
+];
 
 export default function Home() {
     const [isFormOpen, setIsFormOpen] = useState(false)
@@ -51,7 +76,7 @@ export default function Home() {
         <div className="min-h-[200vh] bg-gray-100">
             <Head title="Accueil" />
             
-            {/* Ajout du Typewriter */}
+            {/* Typewriter */}
             <Typewriter />
             
             {/* Section Hero */}
@@ -95,6 +120,9 @@ export default function Home() {
 
             {/* Bandeau de technologies avec défilement */}
             <TechScroll />
+
+            {/* Section Nos Offres */}
+            <OffersSection />
 
             {/* Section Calendrier */}
             <section id="calendly-section" className="h-screen flex items-center justify-center">
