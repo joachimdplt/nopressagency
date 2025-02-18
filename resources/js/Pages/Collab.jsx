@@ -145,9 +145,9 @@ export default function Collab() {
             </div>
             
             {/* Container pour les sections scrollables */}
-            <div className="snap-y snap-mandatory h-screen overflow-y-auto">
+            <div className="snap-y snap-mandatory h-screen overflow-y-auto divide-y-2 divide-gray-200">
                 {/* Section Lucile Pigeot */}
-                <section className="h-screen flex snap-start">
+                <section className="h-screen flex snap-start border-b-4 border-gray-200">
                     <div className="w-1/2 bg-white p-12">
                         <div className="max-w-2xl mx-auto">
                             <div className={`transition-all duration-300 ${showDetails ? 'h-0 opacity-0 overflow-hidden' : 'h-auto opacity-100'}`}>
@@ -245,32 +245,32 @@ export default function Collab() {
                             </svg>
                         </button>
 
-                        <div className="h-full flex items-center justify-center p-12">
+                        <div className="h-full flex flex-col items-center justify-center p-12 -mt-12">
                             <FadeWrapper key={activeImage}>
                                 <img 
                                     src={projectImages[activeImage].src}
                                     alt={projectImages[activeImage].alt}
-                                    className="max-w-full h-auto shadow-xl rounded-lg"
+                                    className="max-w-full h-auto shadow-xl rounded-lg mb-8"
                                 />
                             </FadeWrapper>
-                        </div>
 
-                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                            {projectImages.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setActiveImage(index)}
-                                    className={`w-2 h-2 rounded-full transition-all ${
-                                        index === activeImage ? 'bg-blue-600 w-4' : 'bg-gray-300'
-                                    }`}
-                                />
-                            ))}
+                            <div className="flex space-x-2">
+                                {projectImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveImage(index)}
+                                        className={`w-2 h-2 rounded-full transition-all ${
+                                            index === activeImage ? 'bg-blue-600 w-4' : 'bg-gray-300'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 {/* Section Kitty */}
-                <section className="h-screen flex snap-start">
+                <section className="h-screen flex snap-start border-t-4 border-gray-200">
                     <div className="w-1/2 bg-white relative">
                         <button 
                             onClick={prevKittyImage}
@@ -290,26 +290,26 @@ export default function Collab() {
                             </svg>
                         </button>
 
-                        <div className="h-full flex items-center justify-center p-12">
+                        <div className="h-full flex flex-col items-center justify-center p-12 -mt-12">
                             <FadeWrapper key={activeKittyImage}>
                                 <img 
                                     src={kittyImages[activeKittyImage].src}
                                     alt={kittyImages[activeKittyImage].alt}
-                                    className="max-w-full h-auto shadow-xl rounded-lg"
+                                    className="max-w-full h-auto shadow-xl rounded-lg mb-8"
                                 />
                             </FadeWrapper>
-                        </div>
 
-                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                            {kittyImages.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setActiveKittyImage(index)}
-                                    className={`w-2 h-2 rounded-full transition-all ${
-                                        index === activeKittyImage ? 'bg-blue-600 w-4' : 'bg-gray-300'
-                                    }`}
-                                />
-                            ))}
+                            <div className="flex space-x-2">
+                                {kittyImages.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setActiveKittyImage(index)}
+                                        className={`w-2 h-2 rounded-full transition-all ${
+                                            index === activeKittyImage ? 'bg-blue-600 w-4' : 'bg-gray-300'
+                                        }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
 
@@ -410,7 +410,7 @@ export default function Collab() {
                 </section>
 
                 {/* Section 3 */}
-                <section className="h-screen flex snap-start">
+                <section className="h-screen flex snap-start border-t-4 border-gray-200">
                     <div className="w-1/2 bg-white">
                         <div className="container h-full flex items-center">
                         </div>
