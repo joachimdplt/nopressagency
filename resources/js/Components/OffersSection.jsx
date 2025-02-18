@@ -5,7 +5,7 @@ const offers = [
     {
         title: "Site Web",
         description: "Boostez votre activité grâce à votre site internet clé en main.",
-        image: "/images/mockups/site-web.jpg",
+        image: "/images/mockups/makeda.png",
         link: "/solutions#site-web",
         isNew: true
     },
@@ -19,7 +19,7 @@ const offers = [
     {
         title: "Application Mobile",
         description: "Transformez votre présence en ligne en une véritable vitrine incontournable pour générer davantage de contacts",
-        image: "/images/mockups/4273279.jpg",
+        image: "/images/mockups/appkitty.png",
         link: "/solutions#app-mobile",
         isNew: true
     }
