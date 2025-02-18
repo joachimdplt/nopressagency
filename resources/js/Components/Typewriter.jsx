@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Typewriter = () => {
+    const { t } = useTranslation();
     const [displayTexts, setDisplayTexts] = useState(['noPress', '']);
     const [currentPhrase, setCurrentPhrase] = useState(1);
     const [isTyping, setIsTyping] = useState(true);
     const [isVisible, setIsVisible] = useState(true);
 
-    const phrases = [
-        'noPress',
-        'Une agence pour les pros.',
-        'Prenez rendez-vous dès aujourd\'hui !',
-        'Votre site est livré en 5 jours !'
-    ];
+    const lines = t('typewriter.lines', { returnObjects: true });
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,11 +29,11 @@ const Typewriter = () => {
         
         if (isTyping) {
             const currentText = displayTexts[1] || '';
-            if (currentText.length < phrases[currentPhrase].length) {
+            if (currentText.length < lines[currentPhrase].length) {
                 timeout = setTimeout(() => {
                     setDisplayTexts(prev => [
                         'noPress',
-                        phrases[currentPhrase].slice(0, currentText.length + 1)
+                        lines[currentPhrase].slice(0, currentText.length + 1)
                     ]);
                 }, 100);
             } else {
@@ -47,7 +44,7 @@ const Typewriter = () => {
         } else {
             timeout = setTimeout(() => {
                 setDisplayTexts(['noPress', '']);
-                setCurrentPhrase(prev => prev === phrases.length - 1 ? 1 : prev + 1);
+                setCurrentPhrase(prev => prev === lines.length - 1 ? 1 : prev + 1);
                 setIsTyping(true);
             }, 1000);
         }

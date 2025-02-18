@@ -8,18 +8,10 @@ import TechScroll from '@/Components/TechScroll'
 import Typewriter from '@/Components/Typewriter'
 import AppLayout from '@/Layouts/AppLayout'
 import OffersSection from '@/Components/OffersSection'
-
-const technologies = [
-    { name: 'React', icon: '⚛️' },
-    { name: 'Laravel', icon: '🚀' },
-    { name: 'MySQL', icon: '🗄️' },
-    { name: 'MongoDB', icon: '🍃' },
-    { name: 'Supabase', icon: '⚡' },
-    { name: 'Google Cloud', icon: '☁️' },
-    { name: 'React Native', icon: '📱' }
-];
+import { useTranslation } from 'react-i18next'
 
 export default function Home() {
+    const { t } = useTranslation()
     const [isFormOpen, setIsFormOpen] = useState(false)
     const [showCalendar, setShowCalendar] = useState(false)
 
@@ -55,27 +47,27 @@ export default function Home() {
                     <div className="flex items-center justify-between">
                         <div className="max-w-2xl">
                             <FadeWrapper>
-                                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight">
-                                    Vitrine, web app ou application mobile ?
+                                <h1 className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight max-w-3xl whitespace-pre-line">
+                                    {t('home.hero.title')}
                                 </h1>
-                                <h2 className="text-2xl md:text-3xl font-medium text-blue-600 mt-4">
-                                    Nous avons tout ce qu'il vous faut.
+                                <h2 className="text-2xl md:text-3xl font-medium text-blue-600 mt-4 max-w-2xl">
+                                    {t('home.hero.subtitle')}
                                 </h2>
                             </FadeWrapper>
 
                             <FadeWrapper delay={1}>
-                                <div className="flex gap-4 mt-12">
+                                <div className="flex flex-wrap gap-4 mt-12">
                                     <button
                                         onClick={() => setIsFormOpen(true)}
-                                        className="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors"
+                                        className="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors whitespace-nowrap"
                                     >
-                                        Je veux un site internet
+                                        {t('home.hero.cta.website')}
                                     </button>
                                     <button
                                         onClick={scrollToCalendly}
-                                        className="px-8 py-3 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors"
+                                        className="px-8 py-3 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors whitespace-nowrap"
                                     >
-                                        Prendre rendez-vous
+                                        {t('home.hero.cta.meeting')}
                                     </button>
                                 </div>
                             </FadeWrapper>
@@ -113,25 +105,25 @@ export default function Home() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         {/* Texte à gauche */}
                         <FadeWrapper show={showCalendar}>
-                            <div className="max-w-xl">
-                                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight mb-6">
-                                    Pourquoi payer Calendly tous les mois ?
+                            <div className="max-w-xl space-y-6">
+                                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 leading-tight">
+                                    {t('home.calendar.title')}
                                 </h2>
-                                <p className="text-xl text-gray-600">
-                                    Nous pouvons vous intégrer des solutions sur mesure, adaptées à vos besoins spécifiques, sans frais mensuels récurrents.
+                                <p className="text-xl text-gray-600 max-w-2xl">
+                                    {t('home.calendar.description')}
                                 </p>
-                                <ul className="mt-8 space-y-4">
+                                <ul className="space-y-4">
                                     <li className="flex items-center gap-3 text-gray-700">
                                         <span className="text-green-500 text-xl">✓</span>
-                                        Intégration personnalisée
+                                        {t('home.calendar.benefits.integration')}
                                     </li>
                                     <li className="flex items-center gap-3 text-gray-700">
                                         <span className="text-green-500 text-xl">✓</span>
-                                        Sans abonnement mensuel
+                                        {t('home.calendar.benefits.noSubscription')}
                                     </li>
                                     <li className="flex items-center gap-3 text-gray-700">
                                         <span className="text-green-500 text-xl">✓</span>
-                                        Support inclus
+                                        {t('home.calendar.benefits.support')}
                                     </li>
                                 </ul>
                             </div>
@@ -142,7 +134,7 @@ export default function Home() {
                             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
                                 <div className="flex justify-between items-center mb-6">
                                     <h3 className="text-2xl font-bold text-gray-900">
-                                        Prenez rendez-vous
+                                        {t('home.calendar.booking')}
                                     </h3>
                                 </div>
                                 <CustomCalendar />

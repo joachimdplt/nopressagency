@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next';
 
 export default function TypeformSurvey({ isOpen, onClose }) {
+    const { t } = useTranslation();
     const [step, setStep] = useState(-1)
     const [answers, setAnswers] = useState({
         firstName: '',
@@ -14,76 +16,15 @@ export default function TypeformSurvey({ isOpen, onClose }) {
     })
 
     const intro = {
-        title: "Afin de mieux comprendre vos besoins et de créer le site parfait et entièrement personnalisé pour vous, j'ai quelques questions à vous poser. 🚀",
+        title: t('typeform.intro.title'),
         isIntro: true
     }
 
-    const questions = [
-        {
-            title: "D'abord, j'aimerais connaître votre prénom, s'il vous plaît !",
-            subtitle: "Cette question est requise*",
-            key: "firstName",
-            type: "text",
-            placeholder: "Votre prénom",
-            required: true
-        },
-        {
-            title: answers.firstName ? `Salut ! ${answers.firstName}, Pourrions-nous connaître le nom de votre entreprise, s'il vous plaît ?` : "Pourrions-nous connaître le nom de votre entreprise, s'il vous plaît ?",
-            subtitle: "Cette question est indispensable ✅",
-            key: "companyName",
-            type: "text",
-            placeholder: "Nom de l'entreprise",
-            required: true
-        },
-        {
-            title: "Avez-vous déjà un Site Internet ?",
-            key: "hasSite",
-            type: "radio",
-            options: [
-                { value: "yes", label: "Oui" },
-                { value: "no", label: "Non" }
-            ]
-        },
-        {
-            title: "Quel est votre budget ?",
-            key: "budget",
-            type: "radio",
-            options: [
-                { value: "-1000", label: "Moins de 1000 €" },
-                { value: "1000-2000", label: "1000 - 2000 €" },
-                { value: "2000-3000", label: "2000 - 3000 €" },
-                { value: "3000+", label: "Plus de 3000 €" }
-            ]
-        },
-        {
-            title: "Quelle est votre adresse e-mail de contact ? 📧",
-            subtitle: "Cette question est requise*",
-            key: "email",
-            type: "email",
-            placeholder: "votre@email.com",
-            required: true
-        },
-        {
-            title: "À propos de votre site web idéal, pourriez-vous nous en parler en quelques phrases ?",
-            subtitle: "(One page, E-commerce, Full section, site vitrine, marketplace...) Cette question est cruciale ✅",
-            key: "projectDescription",
-            type: "text",
-            placeholder: "Décrivez votre projet idéal...",
-            required: true
-        },
-        {
-            title: "Pouvez-vous me renseigner votre numéro ?",
-            subtitle: "Cette question est requise*",
-            key: "phone",
-            type: "tel",
-            placeholder: "06 XX XX XX XX",
-            required: true
-        }
-    ]
+    const questions = t('typeform.questions', { returnObjects: true });
 
     const finalMessage = {
-        title: "Merci d'avoir rempli ce formulaire",
-        subtitle: "Je vais vous contacter sous 24H",
+        title: t('typeform.final.title'),
+        subtitle: t('typeform.final.subtitle'),
         isFinal: true
     }
 
@@ -186,7 +127,7 @@ export default function TypeformSurvey({ isOpen, onClose }) {
                     <div className="flex justify-between items-center">
                         {step >= 0 && (
                             <div className="text-sm text-gray-500">
-                                Question {step + 1} sur {questions.length}
+                                {t('typeform.progress', { current: step + 1, total: questions.length })}
                             </div>
                         )}
                         
@@ -195,14 +136,18 @@ export default function TypeformSurvey({ isOpen, onClose }) {
                                 onClick={onClose}
                                 className="px-4 py-2 text-gray-600 hover:text-gray-800"
                             >
-                                Annuler
+                                {t('typeform.buttons.cancel')}
                             </button>
                             <button
                                 onClick={nextStep}
                                 className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                                 disabled={currentQuestion.required && !answers[currentQuestion.key]}
                             >
-                                {step === -1 ? 'Commencer' : step === questions.length - 1 ? 'Terminer' : 'Suivant'}
+                                {step === -1 
+                                    ? t('typeform.buttons.start') 
+                                    : step === questions.length - 1 
+                                        ? t('typeform.buttons.finish') 
+                                        : t('typeform.buttons.next')}
                             </button>
                         </div>
                     </div>

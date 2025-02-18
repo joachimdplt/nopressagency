@@ -1,32 +1,28 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const Terminal = () => {
+    const { t } = useTranslation();
+    const slogans = t('terminal.slogans', { returnObjects: true });
+    const expertiseItems = t('terminal.expertise.items', { returnObjects: true });
     const [text, setText] = useState('');
-    const fullText = `$ no-press start
+
+    // Construire le texte dynamiquement avec les traductions
+    const getFullText = () => `$ no-press start
 > Initializing No Press Agency...
 
 === No Press Agency ===
-> "Your vision, our code"
-> "From design to deployment"
-> "Websites that convert"
-> "Performance and elegance"
-> "Coded with passion"
+${slogans.map(slogan => `> "${slogan}"`).join('\n')}
 
-> Expertise:
-  - Cloud Architecture ☁️
-  - RESTful API 🚀
-  - Progressive Web Apps ⚛️
-  - SEO Optimization 🔍
-  - Security & Performance ⚡️
-  - Mobile First Design 📱
-  - Scalable Databases 🗄️
-  - Continuous Integration 🔄
+> ${t('terminal.expertise.title')}
+${expertiseItems.map(item => `  - ${item}`).join('\n')}
 
 Status: Ready to create amazing things!
 $ _`;
 
     useEffect(() => {
+        const fullText = getFullText();
         let currentIndex = 0;
         const timer = setInterval(() => {
             if (currentIndex <= fullText.length) {
@@ -38,7 +34,7 @@ $ _`;
         }, 30);
 
         return () => clearInterval(timer);
-    }, []);
+    }, [t]); // Ajouter t comme dépendance pour réagir aux changements de langue
 
     return (
         <div className="flex justify-center items-center w-full">

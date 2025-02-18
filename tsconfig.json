@@ -5,7 +5,9 @@
     "moduleResolution": "node",
     "jsx": "react",
     "allowJs": true,
-    "strict": true
+    "strict": true,
+    "noEmit": true
   },
-  "include": ["resources/js/**/*"]
+  "include": ["resources/js/**/*"],
+  "exclude": ["resources/js/bootstrap.js"]
 } 
