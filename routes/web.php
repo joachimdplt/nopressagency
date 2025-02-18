@@ -32,6 +32,10 @@ Route::get('/solutions', function () {
     return Inertia::render('Solutions');
 })->name('solutions');
 
+Route::get('/collab', function () {
+    return Inertia::render('Collab');
+})->name('collab');
+
 Route::get('/contact', function () {
     return Inertia::render('Contact');
 })->name('contact');

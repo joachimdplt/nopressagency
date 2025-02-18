@@ -7,21 +7,21 @@ const Terminal = () => {
 > Initializing No Press Agency...
 
 === No Press Agency ===
-> "Votre vision, notre code"
-> "Du design à la mise en ligne"
-> "Des sites qui convertissent"
-> "Performance et élégance"
-> "Codé avec passion"
+> "Your vision, our code"
+> "From design to deployment"
+> "Websites that convert"
+> "Performance and elegance"
+> "Coded with passion"
 
 > Expertise:
-  - Architecture Cloud ☁️
-  - API RESTful 🚀
+  - Cloud Architecture ☁️
+  - RESTful API 🚀
   - Progressive Web Apps ⚛️
-  - Optimisation SEO 🔍
-  - Sécurité & Performance ⚡️
+  - SEO Optimization 🔍
+  - Security & Performance ⚡️
   - Mobile First Design 📱
-  - Base de données scalables 🗄️
-  - Intégration continue 🔄
+  - Scalable Databases 🗄️
+  - Continuous Integration 🔄
 
 Status: Ready to create amazing things!
 $ _`;

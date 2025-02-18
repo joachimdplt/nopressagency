@@ -12,8 +12,9 @@ const Navbar = () => {
 
                     {/* Navigation Links */}
                     <div className="flex gap-8">
-                        <NavLink href="/">Accueil</NavLink>
-                        <NavLink href="/solutions">Nos Solutions</NavLink>
+                        <NavLink href="/">Home</NavLink>
+                        <NavLink href="/solutions">Solutions</NavLink>
+                        <NavLink href="/collab">They loved us</NavLink>
                         <NavLink href="/contact">Contact</NavLink>
                     </div>
                 </div>
